@@ -1,0 +1,75 @@
+name: Update prices and deploy GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - public/market-prices.json
+  schedule:
+    # Once daily at approximately 14:30 Taiwan time; latest completed sessions only.
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify price parsers
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Fetch closing references (keep last good data on failures)
+        id: quotes
+        continue-on-error: true
+        run: python scripts/update_market_prices.py
+      - name: Save public price snapshot
+        run: |
+          git add public/market-prices.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Update closing-price references [skip ci]'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+  build:
+    needs: refresh
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          VITE_GA_MEASUREMENT_ID: G-LMTMCMGQ5Q
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
