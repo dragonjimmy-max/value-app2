@@ -1,30 +1,30 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-16T11:48:38+00:00",
+  "checkedAt": "2026-10-17T11:05:09+00:00",
   "quotes": {
     "etf": {
-      "value": 108.9,
-      "currency": "TWD",
-      "date": "2026-10-15",
-      "source": "臺灣證券交易所收盤資料",
-      "url": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL",
-      "fetchedAt": "2026-10-16T11:48:38+00:00"
-    },
-    "spy": {
-      "value": 771.79,
-      "currency": "USD",
-      "date": "2026-10-15",
-      "source": "Yahoo Finance 日線收盤價",
-      "url": "https://finance.yahoo.com/quote/SPY/history/",
-      "fetchedAt": "2026-10-16T11:48:38+00:00"
-    },
-    "fx": {
-      "value": 32.360287,
+      "value": 109.0,
       "currency": "TWD",
       "date": "2026-10-16",
+      "source": "臺灣證券交易所收盤資料",
+      "url": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL",
+      "fetchedAt": "2026-10-17T11:05:09+00:00"
+    },
+    "spy": {
+      "value": 763.25,
+      "currency": "USD",
+      "date": "2026-10-16",
+      "source": "Yahoo Finance 日線收盤價",
+      "url": "https://finance.yahoo.com/quote/SPY/history/",
+      "fetchedAt": "2026-10-17T11:05:09+00:00"
+    },
+    "fx": {
+      "value": 32.444081,
+      "currency": "TWD",
+      "date": "2026-10-17",
       "source": "ExchangeRate-API 美元參考匯率",
       "url": "https://www.exchangerate-api.com/",
-      "fetchedAt": "2026-10-16T11:48:38+00:00"
+      "fetchedAt": "2026-10-17T11:05:09+00:00"
     }
   },
   "errors": {}
