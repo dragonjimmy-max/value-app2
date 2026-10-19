@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-18T11:36:02+00:00",
+  "checkedAt": "2026-10-19T13:50:00+00:00",
   "quotes": {
     "etf": {
       "value": 109.0,
@@ -8,7 +8,7 @@
       "date": "2026-10-16",
       "source": "臺灣證券交易所收盤資料",
       "url": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL",
-      "fetchedAt": "2026-10-18T11:36:02+00:00"
+      "fetchedAt": "2026-10-19T13:50:00+00:00"
     },
     "spy": {
       "value": 763.25,
@@ -16,15 +16,15 @@
       "date": "2026-10-16",
       "source": "Yahoo Finance 日線收盤價",
       "url": "https://finance.yahoo.com/quote/SPY/history/",
-      "fetchedAt": "2026-10-18T11:36:02+00:00"
+      "fetchedAt": "2026-10-19T13:50:00+00:00"
     },
     "fx": {
-      "value": 32.436043,
+      "value": 32.446228,
       "currency": "TWD",
-      "date": "2026-10-18",
+      "date": "2026-10-19",
       "source": "ExchangeRate-API 美元參考匯率",
       "url": "https://www.exchangerate-api.com/",
-      "fetchedAt": "2026-10-18T11:36:02+00:00"
+      "fetchedAt": "2026-10-19T13:50:00+00:00"
     }
   },
   "errors": {}
